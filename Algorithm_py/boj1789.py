@@ -1,3 +1,4 @@
+# S5
 import math
 
 # s는 합계
