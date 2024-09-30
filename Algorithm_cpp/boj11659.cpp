@@ -8,22 +8,22 @@ int main() {
 	cout.tie(NULL);
 	cin.tie(NULL);
 
-	int numbers, sum_num; // ¼ö, ÇÕÀÇ °³¼ö
+	int numbers, sum_num; // ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	cin >> numbers >> sum_num;
-	long long sum[numbers + 1]; // ÇÕ°è ÀúÀå ¹è¿­(0À¸·Î ÃÊ±âÈ­)
-	sum[0] = 0; // ÃÊ±â ¹è¿­ 0
+	long long sum[numbers + 1]; // ï¿½Õ°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­(0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­)
+	sum[0] = 0; // ï¿½Ê±ï¿½ ï¿½è¿­ 0
 
-	// i=1ºÎÅÍ ÃÖ´ë 100001±îÁöÀÇ ¹üÀ§¿¡ ÀúÀåµÊ
+	// i=1ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ 100001ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (int i = 1; i <= numbers; i++) {
 		long long tmp;
 		cin >> tmp;
-		sum[i] = sum[i - 1] + tmp; // ±¸°£ ÇÕ ±¸ÇÏ±â
+		sum[i] = sum[i - 1] + tmp; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 	}
 
 
 	for (int i = 0; i < sum_num; i++) {
 		int start, end;
-		cin >> start >> end; // ±¸°£ ÇÕ ¹üÀ§ ÀÔ·Â
+		cin >> start >> end; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 		int ans = sum[end] - sum[start - 1];
 		cout << ans << "\n";
 	}

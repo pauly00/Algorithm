@@ -5,31 +5,31 @@
 using namespace std;
 
 int main() {
-	int N; // °ú¸ñ °³¼ö
+	int N; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	cin >> N;
 
-	vector<int> point; // °¢ °ú¸ñ º° Á¡¼ö
+	vector<int> point; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	long M = 0; // ÃÖ´ë°ª
-	// Á¡¼ö ÀÔ·Â¹Þ±â
+	long M = 0; // ï¿½Ö´ë°ª
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â¹Þ±ï¿½
 	for (int i = 0; i < N; i++) {
-		int score = 0; // ÀÔ·Â¹ÞÀ» Á¡¼ö
+		int score = 0; // ï¿½Ô·Â¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		cin >> score;
 
 		point.push_back(score);
 
-		// ÃÑÁ¡ °è»ê
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if (score > M)
 			M = score;
 	}
 
-	// ÃÑÁ¡ °è»ê
-	double sum = 0; // ÃÑÁ¡
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	double sum = 0; // ï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < N; i++) {
 		sum += ((double)point[i] / M);
 	}
 
-	// Æò±Õ°ª °è»ê
+	// ï¿½ï¿½Õ°ï¿½ ï¿½ï¿½ï¿½
 	double result = sum / N * 100;
 	cout << result;
 }

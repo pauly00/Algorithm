@@ -9,49 +9,49 @@ int main() {
 	cout.tie(NULL);
 	cin.tie(NULL);
 	
-	int n; // ¼öÀÇ °³¼ö
+	int n; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	cin >> n;
 
-	vector<int> num(n, 0); // n°³ÀÇ ¼öµé
+	vector<int> num(n, 0); // nï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	for (int i = 0; i < n; i++) {
 		cin >> num[i];
 	}
 	
-	int ans = 0; // Ãâ·Â°ª
+	int ans = 0; // ï¿½ï¿½Â°ï¿½
 
-	// ¿À¸§Â÷¼ø Á¤·Ä ÈÄ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	sort(num.begin(), num.end());
 
-	// ±âÁØÁ¡À» ³Ö°í
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½
 	for (int i = 0; i < n; i++) {
-		long find = num[i]; // Ã£°íÀÚ ÇÏ´Â ¼ö (10¾ï + 10¾ï > 21¾ï °¡´É)
+		long find = num[i]; // Ã£ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ (10ï¿½ï¿½ + 10ï¿½ï¿½ > 21ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
 		int first_pointer = 0;
 		int second_pointer = n - 1;
 	
-		// ±× ¾Õ¹øÈ£ºÎÅÍ °¡Àå ÀÛÀº ¹øÈ£±îÁö Åõ Æ÷ÀÎÅÍ È°¿ë
+		// ï¿½ï¿½ ï¿½Õ¹ï¿½È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½
 		while (first_pointer < second_pointer) {
 			if (num[first_pointer] + num[second_pointer] == find) {
-				// ´Ù¸¥ ¼öµéÀÇ ÇÕÀÎÁö Ã¼Å©ÇØ¾ß µÊ(°ãÄ§ ¹æÁö)
+				// ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ø¾ï¿½ ï¿½ï¿½(ï¿½ï¿½Ä§ ï¿½ï¿½ï¿½ï¿½)
 				if (first_pointer != i && second_pointer != i) {
 					ans++;
 					break;
 				}
 
 				else if (first_pointer == i) {
-					first_pointer++; // Ã¹¹øÂ° Æ÷ÀÎÅÍ ±âÁØÁ¡ Áõ°¡
+					first_pointer++; // Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}
 
 				else if (second_pointer == i) {
-					second_pointer--; // µÎ¹øÂ° Æ÷ÀÎÅÍ ±âÁØÁ¡ °¨¼Ò
+					second_pointer--; // ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}
-			} // °ýÈ£ À§Ä¡ Á¶½É!!!
+			} // ï¿½ï¿½È£ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½!!!
 
 			else if (num[first_pointer] + num[second_pointer] < find)
-				first_pointer++; // ÇÕÀÌ ´õ Å¬ ¶§(Áõ°¡)
+				first_pointer++; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å¬ ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 
 			else if (num[first_pointer] + num[second_pointer] > find)
-				second_pointer--; // ÇÕÀÌ ´õ ÀÛÀ» ¶§(°¨¼Ò)
+				second_pointer--; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 		}
 	}
 	cout << ans;

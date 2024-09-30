@@ -9,30 +9,30 @@ int main() {
 	cout.tie(NULL);
 	cin.tie(NULL);
 
-	int n, m; // Àç·á n°ú Àç·áµéÀÇ ÇÕ m
+	int n, m; // ï¿½ï¿½ï¿½ nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ m
 	cin >> n >> m;
-	vector<int> num(n, 0); // n°³ÀÇ °íÀ¯ ¹øÈ£
+	vector<int> num(n, 0); // nï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
 
-	// n°³ÀÇ °ªµé ÀÔ·Â
+	// nï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	for (int i = 0; i < n; i++)
 		cin >> num[i];
 
-	sort(num.begin(), num.end()); // ¿À¸§Â÷¼ø Á¤·Ä
+	sort(num.begin(), num.end()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	int ans = 0; // Ãâ·Â°ª
+	int ans = 0; // ï¿½ï¿½Â°ï¿½
 
 	int first_pointer = 0;
 	int second_pointer = n - 1;
 
-	// Åõ Æ÷ÀÎÅÍ È°¿ë
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½
 	while (first_pointer < second_pointer) {
 		if (num[first_pointer] + num[second_pointer] < m)
-			first_pointer++; // µÎ ¼öÀÇ ÇÕÀÌ ´õ ÀÛÀ¸¹Ç·Î
+			first_pointer++; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½
 
 		else if (num[first_pointer] + num[second_pointer] > m)
-			second_pointer--; // µÎ ¼öÀÇ ÇÕÀÌ ´õ Å©¹Ç·Î
+			second_pointer--; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å©ï¿½Ç·ï¿½
 
-		else { // ÇÕ°ú ÀÏÄ¡
+		else { // ï¿½Õ°ï¿½ ï¿½ï¿½Ä¡
 			ans++;
 			first_pointer++;
 			second_pointer--;
