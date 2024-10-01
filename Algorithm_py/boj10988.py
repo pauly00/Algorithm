@@ -1,4 +1,4 @@
-#B3
+# B3
 word = list(str(input()))
 
 if list(reversed(word)) == word:
