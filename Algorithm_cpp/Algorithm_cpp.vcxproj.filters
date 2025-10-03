@@ -45,5 +45,20 @@
     <ClCompile Include="boj11003.cpp">
       <Filter>소스 파일\Algorithm_cpp</Filter>
     </ClCompile>
+    <ClCompile Include="boj14658.cpp">
+      <Filter>소스 파일\Algorithm_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj11868.cpp">
+      <Filter>소스 파일\Algorithm_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj11694.cpp">
+      <Filter>소스 파일\Algorithm_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj11871.cpp">
+      <Filter>소스 파일\Algorithm_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj15591.cpp">
+      <Filter>소스 파일\Algorithm_cpp</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
