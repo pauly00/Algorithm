@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# 추가 삭제
+.gitattributes
+.gitignore
+Algorithm_cpp.sln
+
 # User-specific files
 *.rsuser
 *.suo
