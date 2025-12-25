@@ -2,7 +2,6 @@ def solution(num):
     # 원본 미변경
     # num_sorted = sorted(num)
     num.sort()
-    # print(num)
     return num
 
 
