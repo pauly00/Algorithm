@@ -1,4 +1,21 @@
+### IntelliJ IDEA ###
 .idea/
+*.iml
 out/
+gen/
 java/.idea/
 java/Algorithm.iml
+
+### Build Tools ###
+build/
+target/
+
+### Compiled class file ###
+*.class
+
+### Log files ###
+*.log
+
+### OS Files ###
+.DS_Store
+Thumbs.db
