@@ -3,7 +3,7 @@
 
 import java.util.*;
 // a: 낮에 올라가는 높이, b: 밤에 미끄러지는 높이, v: 나무막대의 높이
-public class boj2869 { // 제출 시 Main으로 변경 필수!
+public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
