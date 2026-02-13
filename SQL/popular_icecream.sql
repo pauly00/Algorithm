@@ -1,0 +1,5 @@
+-- 코딩테스트 연습 -> SELECT ->인기있는 아이스크림
+-- 코드를 입력하세요
+SELECT FLAVOR
+FROM FIRST_HALF
+ORDER BY TOTAL_ORDER DESC, SHIPMENT_ID ASC

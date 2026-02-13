@@ -1,0 +1,10 @@
+-- 코딩테스트 연습 SELECT 조건에 맞는 도서 리스트 출력하기
+-- 코드를 입력하세요
+SELECT 
+    BOOK_ID,
+    TO_CHAR(PUBLISHED_DATE, 'YYYY-MM-DD') as PUBLISHED_DATE
+FROM BOOK
+WHERE EXTRACT(YEAR FROM PUBLISHED_DATE)=2021
+    -- EXTRACT보다는 범위로 정하는 게 더 좋을 수도 있다.
+    AND CATEGORY='인문'
+ORDER BY PUBLISHED_DATE ASC;
