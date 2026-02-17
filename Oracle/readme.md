@@ -1,135 +1,89 @@
-# SQL 핵심 키워드 정리
+# SQL 핵심 키워드 정리(Oracle 기준)
 
-## 1. CASE 문
+코딩 테스트에서 자주 사용되는 SQL 핵심 문법을 정리한 문서입니다.
+
+
+## 1. 조건부 출력 (`CASE` 문)
+
+특정 조건에 따라 값을 분기하여 출력할 때 사용합니다.
 
 ```sql
-CASE
-    WHEN 조건 THEN 결과
-    WHEN 조건 THEN 결과
-    ELSE 결과
-END
+SELECT 
+    CASE 
+        WHEN score >= 90 THEN 'A'
+        WHEN score >= 80 THEN 'B'
+        ELSE 'C'
+    END AS grade -- 별칭 지정 권장
+FROM RESULTS;
+
 ```
 
-• SELECT 절에서 조건에 따라 다른 값을 출력할 때 사용
-• 비교 연산자(`=`, `>=`, `<` 등) 사용
-• NULL 비교는 `IS NULL`, `IS NOT NULL` 사용
+> **주의**: `NULL` 판별은 `=`이 아닌 `IS NULL` 또는 `IS NOT NULL`을 사용해야 합니다.
 
-예시
+---
+
+## 2. 날짜 및 시간 함수 (`Date`)
+
+### 2-1. 날짜 데이터 추출 및 변환
+
+| 함수 | 용도 | 예시 |
+| --- | --- | --- |
+| **`EXTRACT`** | 날짜에서 특정 단위 추출 | `EXTRACT(YEAR FROM HIRE_DATE) = 2024` |
+| **`TO_CHAR`** | 날짜를 문자열로 포맷팅 | `TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')` |
+
+---
+
+## 3. 필터링 연산자 (`WHERE` & `IN`)
+
+### 3-1. 기본 비교 연산자
+
+* `=` (같음), `<>` (다름), `>`, `<`, `>=`, `<=`
+
+### 3-2. 다중 선택 연산자 (`IN`)
+
+`OR` 조건을 여러 번 나열하는 대신, 목록 중 하나라도 일치하는 데이터를 찾을 때 사용합니다.
 
 ```sql
-CASE
-    WHEN score >= 90 THEN 'A'
-    ELSE 'B'
-END
+-- 가독성 좋은 IN 연산자 활용
+WHERE FLAVOR IN ('melon', 'strawberry', 'chocolate')
+
 ```
 
 ---
 
-## 2. 날짜 관련 함수
+## 4. 정렬 (`ORDER BY`)
 
-### 2-1. 연도 추출
-
-```sql
-EXTRACT(YEAR FROM 컬럼명) = 2024
-```
-
-• 날짜 타입(Date, Timestamp)에서 연도만 추출
-
----
-
-### 2-2. 날짜 형식 변환 (Oracle 기준)
+결과 집합의 순서를 결정합니다.
 
 ```sql
-TO_CHAR(컬럼명, 'YYYY-MM-DD')
-```
+ORDER BY 
+    SALARY DESC,     -- 1순위: 급여 내림차순
+    HIRE_DATE ASC;   -- 2순위: 입사일 오름차순 (ASC 생략 가능)
 
-• 날짜를 문자열 형식으로 변환
-• 반드시 작은따옴표 사용
-
-예시
-
-```sql
-SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD')
-FROM DUAL;
 ```
 
 ---
 
-## 3. ORDER BY
+## 5. 집계와 필터링 (`WHERE` vs `HAVING`)
 
-```sql
-ORDER BY 컬럼1, 컬럼2 DESC;
-```
+두 예약어는 실행 시점과 필터링 대상이 완전히 다릅니다.
 
-• 여러 컬럼 정렬 시 콤마로 구분
-• ASC (기본값), DESC 사용 가능
-
----
-
-## 4. WHERE 절
-
-```sql
-WHERE 조건
-```
-
-• 데이터 조회 전 필터링
-• 비교 연산자 사용 가능
-==============
-
->
-
-<
-
-> =
-> <=
-> <>
-
-• NULL 비교는 반드시
-IS NULL
-IS NOT NULL
+| 구분 | WHERE | HAVING |
+| --- | --- | --- |
+| **실행 시점** | `GROUP BY` 수행 전 | `GROUP BY` 수행 후 |
+| **필터링 대상** | 개별 행 (Row) | 그룹화된 결과 (Group) |
+| **집계 함수** | 사용 불가 (`AVG`, `SUM` 등) | **사용 가능** |
 
 ---
 
-## 5. WHERE vs HAVING 차이
+## SQL 실행 순서 (반드시 암기!)
 
-### WHERE
+컴퓨터가 쿼리를 읽는 실제 순서입니다. 이 순서를 이해하면 오류를 디버깅하기 쉽습니다.
 
-• GROUP BY 이전에 실행
-• 개별 행(row)을 필터링
-• 집계 함수 사용 불가
+1. **`FROM`** (+ `JOIN`): 어느 표에서 데이터를 가져올지 결정
+2. **`WHERE`**: 조건에 맞는 행들만 먼저 걸러냄
+3. **`GROUP BY`**: 행들을 그룹으로 묶음
+4. **`HAVING`**: 그룹화된 결과 중 필요한 그룹만 남김
+5. **`SELECT`**: 어떤 컬럼을 보여줄지 결정 (**여기서 윈도우 함수 및 별칭 생성**)
+6. **`ORDER BY`**: 최종 결과를 정렬하여 출력
 
-예시
-
-```sql
-SELECT *
-FROM EMP
-WHERE SALARY >= 3000;
-```
-
----
-
-### HAVING
-
-• GROUP BY 이후 실행
-• 그룹 단위 결과를 필터링
-• 집계 함수 사용 가능
-
-예시
-
-```sql
-SELECT DEPTNO, AVG(SALARY)
-FROM EMP
-GROUP BY DEPTNO
-HAVING AVG(SALARY) >= 3000;
-```
-
----
-
-## 실행 순서 정리
-
-FROM
-WHERE
-GROUP BY
-HAVING
-SELECT
-ORDER BY
