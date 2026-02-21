@@ -1,0 +1,18 @@
+-- 코드를 입력하세요
+-- 게시글제목 게시글id 댓글id 댓글작성자id 댓글내용 댓글작성일
+SELECT 
+    b.TITLE TITLE, 
+    b.BOARD_ID BOARD_ID, 
+    r.REPLY_ID REPLY_ID, 
+    r.WRITER_ID WRITER_ID, 
+    r.CONTENTS CONTENTS, 
+    -- 날짜 형식을 맞춰야 한다.
+    TO_CHAR(r.CREATED_DATE, 'YYYY-MM-DD') CREATED_DATE
+FROM USED_GOODS_BOARD b
+INNER JOIN USED_GOODS_REPLY r
+ON b.BOARD_ID = r.BOARD_ID
+-- Oracle에서는 명시적 변환 필요
+-- WHERE b.CREATED_DATE >= TO_DATE('2022-10-01', 'YYYY-MM-DD')
+-- AND b.CREATED_DATE < TO_DATE('2022-11-01', 'YYYY-MM-DD')
+WHERE TO_CHAR(b.CREATED_DATE, 'YYYY-MM') = '2022-10'
+ORDER BY r.CREATED_DATE, b.TITLE;
