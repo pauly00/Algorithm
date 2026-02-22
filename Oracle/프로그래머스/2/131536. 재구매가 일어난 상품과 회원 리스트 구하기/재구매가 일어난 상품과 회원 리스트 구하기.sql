@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+SELECT
+    USER_ID,
+    PRODUCT_ID
+FROM ONLINE_SALE
+-- 회원 + 상품 기준이므로
+GROUP BY USER_ID, PRODUCT_ID	
+-- 조합에 대한 카운트이므로 행 기준
+HAVING COUNT(*) >=2
+ORDER BY USER_ID, PRODUCT_ID DESC;
