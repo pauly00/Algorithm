@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+-- 의사의 이름, 의사ID, 진료과, 고용일자
+SELECT 
+    DR_NAME,
+    DR_ID,
+    MCDP_CD,
+    TO_CHAR(HIRE_YMD, 'YYYY-MM-DD') HIRE_YMD
+FROM DOCTOR
+WHERE MCDP_CD = 'CS' OR MCDP_CD = 'GS'
+ORDER BY HIRE_YMD DESC, DR_NAME
